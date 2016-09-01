@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace FirstXamarin.Droid
 {
-	[Activity(Label = "MainActivity", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity(Label = "MainActivity", MainLauncher = true, Icon = "@mipmap/icon")] //MainLanuncher 進入點, Icon AppIcon
 	public class MainActivity : Activity
 	{
 		int count = 1;
@@ -18,11 +18,22 @@ namespace FirstXamarin.Droid
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button>(Resource.Id.myButton);
+			//Button button = FindViewById<Button>(Resource.Id.myButton);
 
-			button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+			//button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
 
 			//測試修改
+
+			Button btnGoToWeb = FindViewById<Button>(Resource.Id.btnGoToWeb);
+			Button btnGoToMap = FindViewById<Button>(Resource.Id.btnGoToMap);
+
+			btnGoToWeb.Click += (sender, e) => {
+				StartActivity(typeof(WebActivity));
+			};
+
+			btnGoToMap.Click += (sender, e) => {
+				//Intent itMap = new Intent(this, typeof(MapActivity));
+			};
 		}
 	}
 }
